@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora VOLL PILATES GROUP</title>
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#0e1633;
+      --text:#eaf0ff;
+      --muted:#a8b3d6;
+      --stroke:rgba(255,255,255,.10);
+      --accent:#20b2aa;
+      --accent2:#48d1cc;
+      --voll-teal:#20b2aa;
+      --voll-teal-light:#48d1cc;
+      --voll-teal-dark:#008b8b;
+      --danger:#ff5a6a;
+      --ok:#38d39f;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 14px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(32,178,170,.18), transparent 60%),
+        radial-gradient(900px 600px at 80% 30%, rgba(72,209,204,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:min(1040px, 100%);
+      display:grid;
+      gap:16px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+
+    header{
+      padding:18px 20px;
+      background: linear-gradient(90deg, rgba(32,178,170,.20), rgba(72,209,204,.08));
+      border-bottom: 1px solid var(--stroke);
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .voll-logo{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background: #20b2aa;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      flex-shrink:0;
+      box-shadow: 0 4px 20px rgba(32,178,170,.3);
+      padding:14px 12px;
+    }
+    @media (max-width: 600px){
+      .voll-logo{
+        width:80px;
+        height:80px;
+        padding:10px 8px;
+      }
+    }
+    .voll-logo::before{
+      content:"";
+      position:absolute;
+      width:150%;
+      height:150%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%) rotate(-45deg);
+      background: 
+        radial-gradient(ellipse 100% 60% at 20% 30%, rgba(72,209,204,.3) 0%, transparent 50%),
+        radial-gradient(ellipse 100% 60% at 80% 70%, rgba(0,139,139,.25) 0%, transparent 50%);
+      opacity:0.5;
+    }
+    .voll-logo::after{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      background: 
+        radial-gradient(ellipse 90% 50% at 50% 50%, transparent 45%, rgba(0,139,139,.12) 100%);
+      opacity:0.35;
+    }
+    .voll-logo-text{
+      position:relative;
+      z-index:1;
+      text-align:center;
+      color:#ffffff;
+      font-weight:200;
+      letter-spacing:0;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      line-height:1;
+    }
+    .voll-logo-text .voll-main{
+      font-size:28px;
+      font-weight:200;
+      line-height:1;
+      margin-bottom:5px;
+      letter-spacing:4px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .voll-logo-text .voll-sub{
+      font-size:11px;
+      font-weight:200;
+      line-height:1.15;
+      letter-spacing:2.5px;
+      opacity:1;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      word-spacing:3px;
+    }
+    @media (max-width: 600px){
+      .voll-logo-text .voll-main{
+        font-size:24px;
+        letter-spacing:3px;
+        margin-bottom:4px;
+      }
+      .voll-logo-text .voll-sub{
+        font-size:9px;
+        letter-spacing:2px;
+      }
+    }
+    .brand-text{display:flex; flex-direction:column; gap:2px;}
+    .title{font-size: 18px; font-weight: 900; letter-spacing:.2px;}
+    .subtitle{color: var(--muted); font-size: 13px;}
+
+    .right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(32,178,170,.18);
+    }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      padding:6px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.16);
+    }
+    .tab{
+      border:none;
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing:.2px;
+      color: var(--muted);
+      background: transparent;
+      transition: .15s ease;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .tab.active{
+      color:#ffffff;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(32,178,170,.25);
+    }
+
+    .content{padding:22px; display:grid; gap:16px;}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    @media (min-width: 820px){
+      .grid.cols-2{grid-template-columns: 1fr 1fr;}
+      .grid.cols-3{grid-template-columns: 1fr 1fr 1fr;}
+    }
+
+    .field{
+      background: rgba(0,0,0,.16);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius2);
+      padding:14px 14px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width:0;
+    }
+
+    label{font-size: 12px; color: var(--muted); letter-spacing:.2px;}
+
+    input, select{
+      width:100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 2px 0;
+    }
+    input::placeholder{color: rgba(168,179,214,.55); font-weight:700;}
+    select option{background:#0f1a3a;}
+
+    .hint{font-size: 12px; color: rgba(168,179,214,.75); line-height: 1.35;}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+
+    .actions{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top: 4px;
+    }
+    @media (min-width: 820px){ .actions{grid-template-columns: 1fr 1fr;} }
+
+    button{
+      cursor:pointer;
+      border:none;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      font-size: 14px;
+      transition: transform .08s ease, filter .15s ease, opacity .15s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      user-select:none;
+    }
+    .btn-primary{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(32,178,170,.25);
+    }
+    .btn-primary:active{transform: translateY(1px); filter:saturate(1.1)}
+    .btn-ghost{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border: 1px solid var(--stroke);
+    }
+    .btn-ghost:active{transform: translateY(1px); opacity:.95}
+    .btn-danger{
+      background: rgba(255,90,106,.10);
+      color: #ffd6da;
+      border: 1px solid rgba(255,90,106,.35);
+    }
+
+    .error{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,90,106,.35);
+      background: rgba(255,90,106,.10);
+      color: #ffd6da;
+      display:none;
+      font-weight: 800;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .error.show{display:block}
+
+    .result{
+      border-radius: var(--radius2);
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.16);
+      padding: 14px;
+      display:none;
+    }
+    .result.show{display:block}
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 10px 8px;
+      border-bottom: 1px dashed rgba(255,255,255,.10);
+    }
+    .row:last-child{border-bottom:none}
+    .k{color: var(--muted); font-size: 13px;}
+    .v{font-weight: 900; font-size: 14px;}
+
+    .total{
+      margin-top: 10px;
+      border-radius: 14px;
+      padding: 14px 12px;
+      border: 1px solid rgba(32,178,170,.35);
+      background: linear-gradient(90deg, rgba(32,178,170,.14), rgba(72,209,204,.08));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .total .k{color: rgba(234,240,255,.92)}
+    .total .v{
+      font-size: 18px;
+      color: #b0f0ed;
+      text-shadow: 0 10px 30px rgba(32,178,170,.25);
+    }
+
+    /* Parcela cards */
+    .parcelas-wrap{display:grid; gap:12px;}
+    .parcela-card{
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.14);
+      border-radius: 16px;
+      padding: 14px;
+      display:grid;
+      gap:12px;
+    }
+    .parcela-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .parcela-title{
+      font-weight: 950;
+      letter-spacing:.2px;
+      font-size: 13px;
+      color: rgba(234,240,255,.92);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .badge{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+    .btn-mini{
+      padding: 9px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .footer-note{
+      text-align:center;
+      color: rgba(168,179,214,.8);
+      font-size: 12px;
+      padding: 2px 10px 0;
+    }
+
+    .hidden{display:none !important;}
+
+    /* TAG DA RAINBOWS */
+    .rb-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 950;
+      letter-spacing:.2px;
+      font-size: 13px;
+    }
+    .rb-tag strong{font-size:14px;}
+    .rb-tag.zero{
+      border-color: rgba(56,211,159,.35);
+      background: rgba(56,211,159,.10);
+      color: #d7fff1;
+    }
+    .rb-tag.ten{
+      border-color: rgba(72,209,204,.35);
+      background: rgba(72,209,204,.10);
+      color: #b0f0ed;
+    }
+    .rb-tag.fifty{
+      border-color: rgba(255,90,106,.35);
+      background: rgba(255,90,106,.10);
+      color: #ffd6da;
+    }
+    .rb-tag.none{
+      border-color: rgba(255,90,106,.45);
+      background: rgba(255,90,106,.14);
+      color: #ffd6da;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="brand">
+          <div class="voll-logo">
+            <div class="voll-logo-text">
+              <div class="voll-main">VOLL</div>
+              <div class="voll-sub">PILATES GROUP</div>
+            </div>
+          </div>
+          <div class="brand-text">
+            <div class="title" id="headerTitle">CALCULADORA VOLL PILATES GROUP</div>
+            <div class="subtitle" id="headerSubtitle">Escolha a calculadora no topo</div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="tabs" role="tablist" aria-label="Alternar calculadora">
+            <button class="tab active" id="tabJuros" type="button">📈 Atrasos (Juros por parcela)</button>
+            <button class="tab" id="tabRainbows" type="button">💸 Reembolso de Curso (Rainbows)</button>
+          </div>
+
+          <div class="pill" id="todayPill">
+            <span class="dot"></span>
+            <span>Hoje: <span class="mono" id="todayText">--/--/----</span></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- =========================
+             CALCULADORA JUROS (PARCELAS)
+        ========================== -->
+        <section id="secJuros">
+          <div class="hint" style="margin-bottom:6px">
+            Use para calcular <b>parcelas em atraso</b> (ex.: mensalidades). Você informa a <b>data do vencimento</b>,
+            o <b>valor da parcela</b> e a <b>data em que o aluno pretende pagar</b>.
+          </div>
+
+          <div class="parcelas-wrap" id="parcelasWrap"></div>
+
+          <div class="grid cols-2">
+            <button class="btn-ghost" id="btnAddParcela" type="button">➕ Adicionar outra parcela</button>
+            <button class="btn-ghost" id="btnResetParcelas" type="button">♻️ Voltar para 1 parcela</button>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="btnCalcularJuros" type="button">Calcular parcelas</button>
+            <button class="btn-ghost" id="btnLimparJuros" type="button">Limpar tudo</button>
+          </div>
+
+          <div class="error" id="erroJuros"></div>
+
+          <div class="result" id="resultadoJuros">
+            <div id="relatorioParcelas"></div>
+
+            <div class="total" style="margin-top:14px">
+              <div class="k"><b>Total geral da negociação</b></div>
+              <div class="v" id="totalGeralJuros">R$ 0,00</div>
+            </div>
+
+            <div class="footer-note">
+              (interno) Por parcela: <span class="mono">total = principal + (principal*0,02) + (principal*0,0033*dias)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================
+             CALCULADORA REEMBOLSO (RAINBOWS)
+        ========================== -->
+        <section id="secRainbows" class="hidden">
+          <div class="hint" style="margin-bottom:6px">
+            Use para calcular <b>quanto deve ser devolvido ao aluno</b> em caso de cancelamento, conforme as regras do contrato.
+          </div>
+
+          <div class="grid cols-2">
+            <div class="field">
+              <label for="rbValorCurso">Valor total do curso (R$)</label>
+              <input id="rbValorCurso" type="text" inputmode="decimal" placeholder="Ex.: 1.900,00" />
+              <div class="hint">Esse valor é a base para calcular a taxa (10% ou 50%).</div>
+            </div>
+
+            <div class="field">
+              <label for="rbValorPago">Quanto o aluno pagou (R$)</label>
+              <input id="rbValorPago" type="text" inputmode="decimal" placeholder="Ex.: 1.900,00" />
+              <div class="hint">Se pagou parcial, informe o valor pago até o momento.</div>
+            </div>
+          </div>
+
+          <div class="grid cols-2">
+            <div class="field">
+              <label for="rbDataContratacao">Data em que o aluno comprou/pagou (dd/mm/aaaa)</label>
+              <input id="rbDataContratacao" type="text" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10" />
+              <div class="hint">Essa data serve para conferir se o pedido foi feito em até 7 dias.</div>
+            </div>
+
+            <div class="field">
+              <label for="rbDataSolicitacao">Data do pedido de cancelamento (dd/mm/aaaa)</label>
+              <input id="rbDataSolicitacao" type="text" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10" />
+              <div class="hint">Por padrão já vem com a data de hoje (você pode editar).</div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="rbSituacao">Em que momento o aluno está cancelando?</label>
+              <select id="rbSituacao">
+                <option value="antes">Antes do curso iniciar</option>
+                <option value="apos_inicio">Depois que o curso já iniciou (após o 1º módulo)</option>
+                <option value="apos_encerramento">Depois que o curso terminou (sem devolução)</option>
+              </select>
+              <div class="hint">
+                Dica rápida:
+                <span class="mono">Antes do curso</span> → (até 7 dias = 0% | depois = 10%)
+                • <span class="mono">Após início</span> → 50%
+                • <span class="mono">Após término</span> → sem devolução
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="btnCalcularRainbows" type="button">Calcular devolução</button>
+            <button class="btn-ghost" id="btnLimparRainbows" type="button">Limpar</button>
+          </div>
+
+          <div class="error" id="erroRainbows"></div>
+
+          <div class="result" id="resultadoRainbows">
+            <!-- TAG GRANDE -->
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px;">
+              <div class="rb-tag" id="rbTagPercent">
+                ✅ <strong id="rbPercentText">0%</strong> <span style="opacity:.8">taxa aplicada</span>
+              </div>
+              <div class="badge" id="rbTagTitle">REEMBOLSO</div>
+            </div>
+
+            <div class="row">
+              <div class="k">O que foi considerado</div>
+              <div class="v" id="rbRegraAplicada">—</div>
+            </div>
+            <div class="row">
+              <div class="k">Taxa/multa do contrato</div>
+              <div class="v" id="rbMulta">R$ 0,00</div>
+            </div>
+            <div class="row">
+              <div class="k">Valor para devolver ao aluno</div>
+              <div class="v" id="rbDevolver">R$ 0,00</div>
+            </div>
+
+            <div class="total" style="margin-top:12px">
+              <div class="k"><b>Devolver (final)</b></div>
+              <div class="v" id="rbDevolverFinal">R$ 0,00</div>
+            </div>
+
+            <div class="footer-note" id="rbObs"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -----------------------------
+    // Helpers compartilhados
+    // -----------------------------
+    const el = (id) => document.getElementById(id);
+
+    function pad2(v){ return String(v).padStart(2, "0"); }
+
+    function formatDateBR(date){
+      const d = pad2(date.getDate());
+      const m = pad2(date.getMonth() + 1);
+      const y = date.getFullYear();
+      return `${d}/${m}/${y}`;
+    }
+
+    function formatBRL(n){
+      return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    // Converte "dd/mm/aaaa" => Date (00:00 local) com validação real
+    function parseBRDate(str){
+      if(!/^\d{2}\/\d{2}\/\d{4}$/.test(str)) return null;
+      const [dd, mm, yyyy] = str.split("/").map(Number);
+      if(mm < 1 || mm > 12) return null;
+      if(dd < 1 || dd > 31) return null;
+
+      const date = new Date(yyyy, mm - 1, dd, 0, 0, 0, 0);
+      if(date.getFullYear() !== yyyy || date.getMonth() !== (mm - 1) || date.getDate() !== dd) return null;
+      return date;
+    }
+
+    function daysBetween(startDate, endDate){
+      const s = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0,0,0,0);
+      const e = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0,0,0,0);
+      const ms = e.getTime() - s.getTime();
+      return Math.floor(ms / 86400000);
+    }
+
+    function parseMoneyToNumber(str){
+      if(!str) return NaN;
+      let s = String(str).trim().replace(/\s/g, "").replace(/^R\$/i, "");
+      if(s.includes(",") && s.includes(".")){
+        s = s.replace(/\./g, "").replace(",", ".");
+      } else if(s.includes(",")){
+        s = s.replace(",", ".");
+      }
+      const n = Number(s);
+      return n;
+    }
+
+    function maskBRDate(input){
+      let v = input.value.replace(/\D/g, "").slice(0, 8);
+      if(v.length >= 5) input.value = `${v.slice(0,2)}/${v.slice(2,4)}/${v.slice(4)}`;
+      else if(v.length >= 3) input.value = `${v.slice(0,2)}/${v.slice(2)}`;
+      else input.value = v;
+    }
+
+    // -----------------------------
+    // Header / Tabs
+    // -----------------------------
+    const today = new Date();
+    el("todayText").textContent = formatDateBR(today);
+
+    const tabJuros = el("tabJuros");
+    const tabRainbows = el("tabRainbows");
+    const secJuros = el("secJuros");
+    const secRainbows = el("secRainbows");
+
+    function setActiveTab(which){
+      const isJ = which === "juros";
+      tabJuros.classList.toggle("active", isJ);
+      tabRainbows.classList.toggle("active", !isJ);
+      secJuros.classList.toggle("hidden", !isJ);
+      secRainbows.classList.toggle("hidden", isJ);
+
+      if(isJ){
+        el("headerSubtitle").textContent = "Simule parcelas em atraso com data de vencimento e previsão de pagamento";
+      } else {
+        el("headerSubtitle").textContent = "Calcule devolução de curso conforme regras do contrato (Rainbows)";
+      }
+    }
+
+    tabJuros.addEventListener("click", () => setActiveTab("juros"));
+    tabRainbows.addEventListener("click", () => setActiveTab("rainbows"));
+
+    // -----------------------------
+    // JUROS (multi-parcelas)
+    // -----------------------------
+    const parcelasWrap = el("parcelasWrap");
+    const erroJuros = el("erroJuros");
+    const resultadoJuros = el("resultadoJuros");
+    const relatorioParcelas = el("relatorioParcelas");
+    const totalGeralJuros = el("totalGeralJuros");
+
+    let parcelaSeq = 0;
+
+    function createParcelaCard(prefillToday=true){
+      parcelaSeq++;
+      const idx = parcelaSeq;
+
+      const card = document.createElement("div");
+      card.className = "parcela-card";
+      card.dataset.idx = String(idx);
+
+      const head = document.createElement("div");
+      head.className = "parcela-head";
+
+      const title = document.createElement("div");
+      title.className = "parcela-title";
+      title.innerHTML = `📄 Parcela <span class="badge">#${idx}</span>`;
+
+      const btnRemove = document.createElement("button");
+      btnRemove.type = "button";
+      btnRemove.className = "btn-danger btn-mini";
+      btnRemove.textContent = "🗑 Remover";
+      btnRemove.addEventListener("click", () => {
+        if(parcelasWrap.children.length <= 1) return;
+        card.remove();
+        renumberParcelasBadges();
+      });
+
+      head.appendChild(title);
+      head.appendChild(btnRemove);
+
+      const grid = document.createElement("div");
+      grid.className = "grid cols-3";
+
+      // Data vencimento
+      const f1 = document.createElement("div");
+      f1.className = "field";
+      f1.innerHTML = `
+        <label>Quando venceu? (data de vencimento)</label>
+        <input class="p-data-inicio" type="text" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10"/>
+        <div class="hint">Ex.: <span class="mono">01/12/2025</span></div>
+      `;
+
+      // Valor
+      const f2 = document.createElement("div");
+      f2.className = "field";
+      f2.innerHTML = `
+        <label>Valor da parcela (R$)</label>
+        <input class="p-valor" type="text" inputmode="decimal" placeholder="Ex.: 200,00"/>
+        <div class="hint">Use o valor cheio da parcela.</div>
+      `;
+
+      // Data prevista
+      const f3 = document.createElement("div");
+      f3.className = "field";
+      f3.innerHTML = `
+        <label>Para quando o aluno quer pagar?</label>
+        <input class="p-data-prevista" type="text" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10"/>
+        <div class="hint">Padrão: hoje (você pode editar livre).</div>
+      `;
+
+      grid.appendChild(f1);
+      grid.appendChild(f2);
+      grid.appendChild(f3);
+
+      card.appendChild(head);
+      card.appendChild(grid);
+
+      parcelasWrap.appendChild(card);
+
+      const in1 = card.querySelector(".p-data-inicio");
+      const in3 = card.querySelector(".p-data-prevista");
+
+      in1.addEventListener("input", () => maskBRDate(in1));
+      in3.addEventListener("input", () => maskBRDate(in3));
+
+      if(prefillToday){
+        in3.value = formatDateBR(new Date());
+      }
+
+      return card;
+    }
+
+    function renumberParcelasBadges(){
+      const cards = Array.from(parcelasWrap.querySelectorAll(".parcela-card"));
+      cards.forEach((c, i) => {
+        const badge = c.querySelector(".badge");
+        if(badge) badge.textContent = `#${i+1}`;
+      });
+    }
+
+    function resetToOneParcela(){
+      parcelasWrap.innerHTML = "";
+      parcelaSeq = 0;
+      createParcelaCard(true);
+
+      erroJuros.classList.remove("show");
+      erroJuros.textContent = "";
+      resultadoJuros.classList.remove("show");
+      relatorioParcelas.innerHTML = "";
+      totalGeralJuros.textContent = formatBRL(0);
+    }
+
+    el("btnAddParcela").addEventListener("click", () => createParcelaCard(true));
+    el("btnResetParcelas").addEventListener("click", () => resetToOneParcela());
+
+    el("btnLimparJuros").addEventListener("click", () => {
+      resetToOneParcela();
+      const first = parcelasWrap.querySelector(".p-data-inicio");
+      if(first) first.focus();
+    });
+
+    el("btnCalcularJuros").addEventListener("click", () => {
+      erroJuros.classList.remove("show");
+      erroJuros.textContent = "";
+      resultadoJuros.classList.remove("show");
+      relatorioParcelas.innerHTML = "";
+
+      const cards = Array.from(parcelasWrap.querySelectorAll(".parcela-card"));
+      if(cards.length === 0){
+        resetToOneParcela();
+        return;
+      }
+
+      let principalTotal = 0;
+      let multaTotal = 0;
+      let jurosTotal = 0;
+      let totalGeral = 0;
+
+      for(let i=0;i<cards.length;i++){
+        const card = cards[i];
+        const nParcela = i + 1;
+
+        const sVenc = card.querySelector(".p-data-inicio").value.trim();
+        const sPrev = card.querySelector(".p-data-prevista").value.trim();
+        const sValor = card.querySelector(".p-valor").value;
+
+        const dtVenc = parseBRDate(sVenc);
+        if(!dtVenc){
+          return showErroJuros(`Parcela ${nParcela}: preencha uma <b>data de vencimento</b> válida (dd/mm/aaaa).`);
+        }
+
+        const dtPrev = parseBRDate(sPrev);
+        if(!dtPrev){
+          return showErroJuros(`Parcela ${nParcela}: preencha uma <b>data prevista</b> válida (dd/mm/aaaa).`);
+        }
+
+        const principal = parseMoneyToNumber(sValor);
+        if(!Number.isFinite(principal) || principal <= 0){
+          return showErroJuros(`Parcela ${nParcela}: informe um <b>valor da parcela</b> válido (maior que zero).`);
+        }
+
+        let dias = daysBetween(dtVenc, dtPrev);
+        if(dias < 0) dias = 0;
+
+        const multa = principal * 0.02;
+        const juros = principal * 0.0033 * dias;
+        const total = principal + multa + juros;
+
+        principalTotal += principal;
+        multaTotal += multa;
+        jurosTotal += juros;
+        totalGeral += total;
+
+        const bloco = document.createElement("div");
+        bloco.style.marginTop = i === 0 ? "0" : "14px";
+        bloco.innerHTML = `
+          <div class="row">
+            <div class="k"><b>Parcela ${nParcela}</b> <span class="mono" style="opacity:.8">(${formatDateBR(dtVenc)} → ${formatDateBR(dtPrev)})</span></div>
+            <div class="v">${formatBRL(total)}</div>
+          </div>
+          <div class="row">
+            <div class="k">Dias considerados</div>
+            <div class="v">${dias}</div>
+          </div>
+          <div class="row">
+            <div class="k">Valor original da parcela</div>
+            <div class="v">${formatBRL(principal)}</div>
+          </div>
+          <div class="row">
+            <div class="k">Multa (2% uma vez)</div>
+            <div class="v">${formatBRL(multa)}</div>
+          </div>
+          <div class="row">
+            <div class="k">Juros (0,33% ao dia)</div>
+            <div class="v">${formatBRL(juros)}</div>
+          </div>
+          <div class="row">
+            <div class="k"><b>Total desta parcela</b></div>
+            <div class="v"><b>${formatBRL(total)}</b></div>
+          </div>
+        `;
+        relatorioParcelas.appendChild(bloco);
+      }
+
+      const resumo = document.createElement("div");
+      resumo.style.marginTop = "14px";
+      resumo.innerHTML = `
+        <div class="row">
+          <div class="k"><b>Resumo da negociação</b></div>
+          <div class="v">—</div>
+        </div>
+        <div class="row">
+          <div class="k">Soma das parcelas (original)</div>
+          <div class="v">${formatBRL(principalTotal)}</div>
+        </div>
+        <div class="row">
+          <div class="k">Soma das multas</div>
+          <div class="v">${formatBRL(multaTotal)}</div>
+        </div>
+        <div class="row">
+          <div class="k">Soma dos juros</div>
+          <div class="v">${formatBRL(jurosTotal)}</div>
+        </div>
+      `;
+      relatorioParcelas.appendChild(resumo);
+
+      totalGeralJuros.textContent = formatBRL(totalGeral);
+      resultadoJuros.classList.add("show");
+    });
+
+    function showErroJuros(html){
+      erroJuros.innerHTML = html;
+      erroJuros.classList.add("show");
+      resultadoJuros.classList.remove("show");
+    }
+
+    // inicia com 1 parcela
+    resetToOneParcela();
+
+    // -----------------------------
+    // RAINBOWS (reembolso)
+    // -----------------------------
+    const rbValorCurso = el("rbValorCurso");
+    const rbValorPago = el("rbValorPago");
+    const rbDataContratacao = el("rbDataContratacao");
+    const rbDataSolicitacao = el("rbDataSolicitacao");
+    const rbSituacao = el("rbSituacao");
+
+    const erroRainbows = el("erroRainbows");
+    const resultadoRainbows = el("resultadoRainbows");
+    const rbRegraAplicada = el("rbRegraAplicada");
+    const rbMulta = el("rbMulta");
+    const rbDevolver = el("rbDevolver");
+    const rbDevolverFinal = el("rbDevolverFinal");
+    const rbObs = el("rbObs");
+
+    const rbTagPercent = el("rbTagPercent");
+    const rbPercentText = el("rbPercentText");
+    const rbTagTitle = el("rbTagTitle");
+
+    rbDataContratacao.addEventListener("input", () => maskBRDate(rbDataContratacao));
+    rbDataSolicitacao.addEventListener("input", () => maskBRDate(rbDataSolicitacao));
+
+    // preenche data solicitação com hoje por padrão
+    rbDataSolicitacao.value = formatDateBR(new Date());
+
+    el("btnLimparRainbows").addEventListener("click", () => {
+      rbValorCurso.value = "";
+      rbValorPago.value = "";
+      rbDataContratacao.value = "";
+      rbDataSolicitacao.value = formatDateBR(new Date());
+      rbSituacao.value = "antes";
+
+      erroRainbows.classList.remove("show");
+      erroRainbows.textContent = "";
+      resultadoRainbows.classList.remove("show");
+
+      rbValorCurso.focus();
+    });
+
+    el("btnCalcularRainbows").addEventListener("click", () => {
+      erroRainbows.classList.remove("show");
+      erroRainbows.textContent = "";
+      resultadoRainbows.classList.remove("show");
+      rbObs.textContent = "";
+
+      const valorCurso = parseMoneyToNumber(rbValorCurso.value);
+      const valorPago = parseMoneyToNumber(rbValorPago.value);
+
+      if(!Number.isFinite(valorCurso) || valorCurso <= 0){
+        return showErroRainbows("Informe o <b>valor total do curso</b> (maior que zero).");
+      }
+      if(!Number.isFinite(valorPago) || valorPago < 0){
+        return showErroRainbows("Informe <b>quanto o aluno pagou</b> (zero ou maior).");
+      }
+
+      const dtContr = parseBRDate(rbDataContratacao.value.trim());
+      const dtSolic = parseBRDate(rbDataSolicitacao.value.trim());
+
+      if(!dtSolic){
+        return showErroRainbows("Preencha a <b>data do pedido de cancelamento</b> (dd/mm/aaaa).");
+      }
+      if(!dtContr){
+        return showErroRainbows("Preencha a <b>data em que o aluno comprou/pagou</b> (dd/mm/aaaa).");
+      }
+
+      const situacao = rbSituacao.value;
+
+      let multa = 0;
+      let devolver = 0;
+      let regraTxt = "";
+
+      if(situacao === "apos_encerramento"){
+        multa = 0;
+        devolver = 0;
+        regraTxt = "Pedido após o término do curso → sem devolução";
+        rbObs.innerHTML = `Resultado: <span class="mono">não há devolução</span>.`;
+      }
+      else if(situacao === "apos_inicio"){
+        multa = valorCurso * 0.50;
+        devolver = Math.max(0, valorPago - multa);
+        regraTxt = "Pedido após o curso iniciar → taxa de 50% do valor do curso";
+        rbObs.innerHTML = `Cálculo: <span class="mono">devolver = pago − (curso*0,50)</span>`;
+      }
+      else {
+        let dias = daysBetween(dtContr, dtSolic);
+        if(dias < 0) dias = 0;
+
+        if(dias <= 7){
+          multa = 0;
+          devolver = valorPago;
+          regraTxt = `Pedido em ${dias} dia(s) após a compra → devolução integral (0%)`;
+          rbObs.innerHTML = `Janela de até <span class="mono">7 dias</span> → devolve 100%.`;
+        } else {
+          multa = valorCurso * 0.10;
+          devolver = Math.max(0, valorPago - multa);
+          regraTxt = `Pedido em ${dias} dia(s) após a compra → taxa de 10% do valor do curso`;
+          rbObs.innerHTML = `Cálculo: <span class="mono">devolver: pago − (curso*0,10)</span>`;
+        }
+      }
+
+      rbRegraAplicada.textContent = regraTxt;
+      rbMulta.textContent = formatBRL(multa);
+      rbDevolver.textContent = formatBRL(devolver);
+      rbDevolverFinal.textContent = formatBRL(devolver);
+
+      // TAG visual (0% / 10% / 50% / sem devolução)
+      rbTagPercent.classList.remove("zero","ten","fifty","none");
+
+      if(situacao === "apos_encerramento"){
+        rbPercentText.textContent = "SEM DEVOLUÇÃO";
+        rbTagPercent.classList.add("none");
+        rbTagTitle.textContent = "SEM DIREITO A DEVOLUÇÃO";
+      } else if(situacao === "apos_inicio"){
+        rbPercentText.textContent = "50%";
+        rbTagPercent.classList.add("fifty");
+        rbTagTitle.textContent = "CANCELAMENTO APÓS INÍCIO";
+      } else {
+        let diasTmp = daysBetween(dtContr, dtSolic);
+        if(diasTmp < 0) diasTmp = 0;
+
+        if(diasTmp <= 7){
+          rbPercentText.textContent = "0%";
+          rbTagPercent.classList.add("zero");
+          rbTagTitle.textContent = "CANCELAMENTO ANTES DO CURSO";
+        } else {
+          rbPercentText.textContent = "10%";
+          rbTagPercent.classList.add("ten");
+          rbTagTitle.textContent = "CANCELAMENTO ANTES DO CURSO";
+        }
+      }
+
+      resultadoRainbows.classList.add("show");
+    });
+
+    function showErroRainbows(html){
+      erroRainbows.innerHTML = html;
+      erroRainbows.classList.add("show");
+      resultadoRainbows.classList.remove("show");
+    }
+
+    // inicia em Juros
+    setActiveTab("juros");
+  </script>
+</body>
+</html>
