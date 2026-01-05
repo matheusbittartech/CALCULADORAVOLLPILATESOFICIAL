@@ -399,7 +399,7 @@
 
     .hidden{display:none !important;}
 
-    /* TAG DA RAINBOWS */
+    /* TAG DE REEMBOLSO */
     .rb-tag{
       display:inline-flex;
       align-items:center;
@@ -456,7 +456,7 @@
         <div class="right">
           <div class="tabs" role="tablist" aria-label="Alternar calculadora">
             <button class="tab active" id="tabJuros" type="button">📈 Atrasos (Juros por parcela)</button>
-            <button class="tab" id="tabRainbows" type="button">💸 Reembolso de Curso (Rainbows)</button>
+            <button class="tab" id="tabRainbows" type="button">💸 Reembolso de Curso</button>
           </div>
 
           <div class="pill" id="todayPill">
@@ -505,7 +505,7 @@
         </section>
 
         <!-- =========================
-             CALCULADORA REEMBOLSO (RAINBOWS)
+             CALCULADORA REEMBOLSO
         ========================== -->
         <section id="secRainbows" class="hidden">
           <div class="hint" style="margin-bottom:6px">
@@ -676,7 +676,7 @@
       if(isJ){
         el("headerSubtitle").textContent = "Simule parcelas em atraso com data de vencimento e previsão de pagamento";
       } else {
-        el("headerSubtitle").textContent = "Calcule devolução de curso conforme regras do contrato (Rainbows)";
+        el("headerSubtitle").textContent = "Calcule devolução de curso conforme regras do contrato";
       }
     }
 
@@ -922,7 +922,7 @@
     resetToOneParcela();
 
     // -----------------------------
-    // RAINBOWS (reembolso)
+    // REEMBOLSO
     // -----------------------------
     const rbValorCurso = el("rbValorCurso");
     const rbValorPago = el("rbValorPago");
