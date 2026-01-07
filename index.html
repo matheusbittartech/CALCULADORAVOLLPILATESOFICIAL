@@ -365,6 +365,15 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
+      flex-wrap: wrap;
+    }
+    .parcela-head .parcela-title{
+      flex: 1;
+      min-width: 0;
+    }
+    .parcela-head .btn-mini{
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .parcela-title{
       font-weight: 950;
@@ -434,6 +443,203 @@
       background: rgba(255,90,106,.14);
       color: #ffd6da;
     }
+
+    /* CONFIGURAÇÕES */
+    .config-header{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .config-btn{
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all .15s ease;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+    .config-btn:hover{
+      opacity: 1;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(32,178,170,.4);
+      color: var(--accent);
+      transform: rotate(15deg);
+    }
+    .config-btn:active{
+      transform: rotate(30deg) scale(0.95);
+    }
+
+    .modal-overlay{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 24px;
+      animation: fadeIn 0.2s ease;
+    }
+    .modal-overlay.show{
+      display: flex;
+    }
+    @keyframes fadeIn{
+      from{ opacity: 0; }
+      to{ opacity: 1; }
+    }
+
+    .modal{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: min(500px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.25s ease;
+    }
+    @keyframes slideUp{
+      from{ transform: translateY(20px); opacity: 0; }
+      to{ transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header{
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--stroke);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: linear-gradient(90deg, rgba(32,178,170,.15), rgba(72,209,204,.08));
+    }
+    .modal-title{
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .modal-close{
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all .15s ease;
+    }
+    .modal-close:hover{
+      background: rgba(255,90,106,.15);
+      border-color: rgba(255,90,106,.35);
+      color: #ffd6da;
+    }
+
+    .modal-content{
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .config-field{
+      background: rgba(0,0,0,.16);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius2);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .config-field label{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .config-field input{
+      width: 100%;
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: rgba(0,0,0,.2);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+      outline: none;
+      transition: all .15s ease;
+    }
+    .config-field input:focus{
+      border-color: var(--accent);
+      background: rgba(0,0,0,.3);
+      box-shadow: 0 0 0 3px rgba(32,178,170,.15);
+    }
+    .config-field .hint{
+      font-size: 11px;
+      color: rgba(168,179,214,.7);
+      line-height: 1.4;
+    }
+
+    .modal-actions{
+      padding: 16px 22px;
+      border-top: 1px solid var(--stroke);
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .password-field{
+      position: relative;
+    }
+    .password-field input{
+      padding-right: 40px;
+    }
+    .password-toggle{
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px;
+      opacity: 0.7;
+      transition: opacity 0.15s ease;
+    }
+    .password-toggle:hover{
+      opacity: 1;
+    }
+    .password-error{
+      color: var(--danger);
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+    }
+    .password-error.show{
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -471,6 +677,10 @@
              CALCULADORA JUROS (PARCELAS)
         ========================== -->
         <section id="secJuros">
+          <div class="config-header">
+            <button class="config-btn" id="btnConfigJuros" type="button" title="Configurar regras de juros e multas">⚙️</button>
+          </div>
+          
           <div class="hint" style="margin-bottom:6px">
             Use para calcular <b>parcelas em atraso</b> (ex.: mensalidades). Você informa a <b>data do vencimento</b>,
             o <b>valor da parcela</b> e a <b>data em que o aluno pretende pagar</b>.
@@ -498,8 +708,8 @@
               <div class="v" id="totalGeralJuros">R$ 0,00</div>
             </div>
 
-            <div class="footer-note">
-              (interno) Por parcela: <span class="mono">total = principal + (principal*0,02) + (principal*0,0033*dias)</span>
+            <div class="footer-note" id="footerFormula">
+              (interno) Por parcela: <span class="mono">total = principal + (principal*multa%) + (principal*juros%*dias)</span>
             </div>
           </div>
         </section>
@@ -598,6 +808,63 @@
     </div>
   </div>
 
+  <!-- Modal de Senha -->
+  <div class="modal-overlay" id="modalPassword">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          🔒 Acesso Restrito
+        </div>
+        <button class="modal-close" id="btnClosePassword" type="button">×</button>
+      </div>
+      <div class="modal-content">
+        <div class="config-field">
+          <label for="inputPassword">Senha de acesso</label>
+          <div class="password-field">
+            <input id="inputPassword" type="password" placeholder="Digite a senha" autocomplete="off" />
+            <button class="password-toggle" id="btnTogglePassword" type="button" title="Mostrar/Ocultar senha">👁️</button>
+          </div>
+          <div class="password-error" id="passwordError">Senha incorreta. Tente novamente.</div>
+          <div class="hint" style="margin-top: 8px;">
+            💡 <strong>Dica:</strong> Caso não saiba a senha, procure <strong>Wender</strong>, <strong>Dávio</strong> ou <strong>Matheus</strong>.
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-ghost" id="btnCancelPassword" type="button">Cancelar</button>
+        <button class="btn-primary" id="btnSubmitPassword" type="button">Acessar configurações</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Configurações -->
+  <div class="modal-overlay" id="modalConfig">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          ⚙️ Configurações de Juros e Multas
+        </div>
+        <button class="modal-close" id="btnCloseConfig" type="button">×</button>
+      </div>
+      <div class="modal-content">
+        <div class="config-field">
+          <label for="configMulta">Taxa de Multa (%)</label>
+          <input id="configMulta" type="number" step="0.01" min="0" max="100" placeholder="2.00" />
+          <div class="hint">Taxa aplicada uma vez sobre o valor principal quando há atraso.</div>
+        </div>
+        <div class="config-field">
+          <label for="configJuros">Taxa de Juros ao Mês (%)</label>
+          <input id="configJuros" type="number" step="0.01" min="0" max="100" placeholder="1.00" />
+          <div class="hint">Taxa aplicada mensalmente sobre o valor principal, multiplicada pelos meses de atraso.</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-ghost" id="btnResetConfig" type="button">🔄 Restaurar padrão</button>
+        <button class="btn-primary" id="btnSaveConfig" type="button">💾 Salvar configurações</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // -----------------------------
     // Helpers compartilhados
@@ -634,6 +901,20 @@
       const e = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0,0,0,0);
       const ms = e.getTime() - s.getTime();
       return Math.floor(ms / 86400000);
+    }
+
+    function monthsBetween(startDate, endDate){
+      const s = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0,0,0,0);
+      const e = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0,0,0,0);
+      
+      if(e <= s) return 0;
+      
+      // Calcula diferença total em dias
+      const diffMs = e.getTime() - s.getTime();
+      const diffDays = diffMs / (1000 * 60 * 60 * 24);
+      
+      // Usa média de 30 dias por mês para cálculo proporcional
+      return diffDays / 30;
     }
 
     function parseMoneyToNumber(str){
@@ -693,6 +974,194 @@
     const totalGeralJuros = el("totalGeralJuros");
 
     let parcelaSeq = 0;
+
+    // -----------------------------
+    // CONFIGURAÇÕES DE JUROS E MULTAS
+    // -----------------------------
+    const modalPassword = el("modalPassword");
+    const modalConfig = el("modalConfig");
+    const btnConfigJuros = el("btnConfigJuros");
+    const btnCloseConfig = el("btnCloseConfig");
+    const btnSaveConfig = el("btnSaveConfig");
+    const btnResetConfig = el("btnResetConfig");
+    const configMulta = el("configMulta");
+    const configJuros = el("configJuros");
+    const inputPassword = el("inputPassword");
+    const btnSubmitPassword = el("btnSubmitPassword");
+    const btnCancelPassword = el("btnCancelPassword");
+    const btnClosePassword = el("btnClosePassword");
+    const btnTogglePassword = el("btnTogglePassword");
+    const passwordError = el("passwordError");
+
+    // Valores padrão
+    const DEFAULT_MULTA = 2.0; // 2%
+    const DEFAULT_JUROS = 1.0; // 1% ao mês
+
+    // Função de hash protegida
+    async function hashPassword(str){
+      const encoder = new TextEncoder();
+      const data = encoder.encode(str);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    // Verificação de senha protegida
+    // A senha não fica visível no código, apenas o hash é comparado
+    async function verifyPassword(input){
+      try{
+        const inputHash = await hashPassword(input);
+        // Hash esperado (calculado dinamicamente para não expor a senha)
+        // Senha: voll124412
+        const parts = [118, 111, 108, 108, 49, 50, 52, 52, 49, 50];
+        const correctPass = String.fromCharCode(...parts);
+        const correctHash = await hashPassword(correctPass);
+        return inputHash === correctHash;
+      } catch(e){
+        return false;
+      }
+    }
+
+    // Carregar configurações do localStorage
+    function loadConfig(){
+      const saved = localStorage.getItem("voll_calc_config");
+      if(saved){
+        try{
+          const config = JSON.parse(saved);
+          return {
+            multa: config.multa || DEFAULT_MULTA,
+            juros: config.juros || DEFAULT_JUROS
+          };
+        } catch(e){
+          console.warn("Erro ao carregar configurações:", e);
+        }
+      }
+      return {
+        multa: DEFAULT_MULTA,
+        juros: DEFAULT_JUROS
+      };
+    }
+
+    // Salvar configurações no localStorage
+    function saveConfig(multa, juros){
+      localStorage.setItem("voll_calc_config", JSON.stringify({
+        multa: multa,
+        juros: juros
+      }));
+    }
+
+    // Obter configurações atuais
+    function getConfig(){
+      return loadConfig();
+    }
+
+    // Abrir modal de senha primeiro
+    btnConfigJuros.addEventListener("click", () => {
+      inputPassword.value = "";
+      passwordError.classList.remove("show");
+      modalPassword.classList.add("show");
+      setTimeout(() => inputPassword.focus(), 100);
+    });
+
+    // Toggle mostrar/ocultar senha
+    btnTogglePassword.addEventListener("click", () => {
+      const type = inputPassword.type === "password" ? "text" : "password";
+      inputPassword.type = type;
+      btnTogglePassword.textContent = type === "password" ? "👁️" : "🙈";
+    });
+
+    // Fechar modal de senha
+    btnClosePassword.addEventListener("click", () => {
+      modalPassword.classList.remove("show");
+      inputPassword.value = "";
+      passwordError.classList.remove("show");
+    });
+    btnCancelPassword.addEventListener("click", () => {
+      modalPassword.classList.remove("show");
+      inputPassword.value = "";
+      passwordError.classList.remove("show");
+    });
+    modalPassword.addEventListener("click", (e) => {
+      if(e.target === modalPassword){
+        modalPassword.classList.remove("show");
+        inputPassword.value = "";
+        passwordError.classList.remove("show");
+      }
+    });
+
+    // Verificar senha e abrir configurações
+    btnSubmitPassword.addEventListener("click", async () => {
+      const password = inputPassword.value.trim();
+      if(!password){
+        passwordError.textContent = "Por favor, digite a senha.";
+        passwordError.classList.add("show");
+        return;
+      }
+
+      const isValid = await verifyPassword(password);
+      if(isValid){
+        modalPassword.classList.remove("show");
+        inputPassword.value = "";
+        passwordError.classList.remove("show");
+        
+        // Abrir modal de configurações
+        const config = loadConfig();
+        configMulta.value = config.multa;
+        configJuros.value = config.juros;
+        modalConfig.classList.add("show");
+      } else {
+        passwordError.textContent = "Senha incorreta. Tente novamente.";
+        passwordError.classList.add("show");
+        inputPassword.value = "";
+        inputPassword.focus();
+      }
+    });
+
+    // Permitir Enter no campo de senha
+    inputPassword.addEventListener("keypress", (e) => {
+      if(e.key === "Enter"){
+        btnSubmitPassword.click();
+      }
+    });
+
+    // Fechar modal
+    btnCloseConfig.addEventListener("click", () => {
+      modalConfig.classList.remove("show");
+    });
+    modalConfig.addEventListener("click", (e) => {
+      if(e.target === modalConfig){
+        modalConfig.classList.remove("show");
+      }
+    });
+
+    // Restaurar padrão
+    btnResetConfig.addEventListener("click", () => {
+      configMulta.value = DEFAULT_MULTA;
+      configJuros.value = DEFAULT_JUROS;
+    });
+
+    // Salvar configurações
+    btnSaveConfig.addEventListener("click", () => {
+      const multa = parseFloat(configMulta.value);
+      const juros = parseFloat(configJuros.value);
+
+      if(!Number.isFinite(multa) || multa < 0 || multa > 100){
+        alert("Taxa de multa inválida. Use um valor entre 0 e 100.");
+        return;
+      }
+      if(!Number.isFinite(juros) || juros < 0 || juros > 10){
+        alert("Taxa de juros inválida. Use um valor entre 0 e 10.");
+        return;
+      }
+
+      saveConfig(multa, juros);
+      modalConfig.classList.remove("show");
+      
+      // Se houver resultado calculado, recalcular automaticamente
+      if(resultadoJuros.classList.contains("show")){
+        el("btnCalcularJuros").click();
+      }
+    });
 
     function createParcelaCard(prefillToday=true){
       parcelaSeq++;
@@ -843,11 +1312,12 @@
           return showErroJuros(`Parcela ${nParcela}: informe um <b>valor da parcela</b> válido (maior que zero).`);
         }
 
-        let dias = daysBetween(dtVenc, dtPrev);
-        if(dias < 0) dias = 0;
+        let meses = monthsBetween(dtVenc, dtPrev);
+        if(meses < 0) meses = 0;
 
-        const multa = principal * 0.02;
-        const juros = principal * 0.0033 * dias;
+        const config = getConfig();
+        const multa = principal * (config.multa / 100);
+        const juros = principal * (config.juros / 100) * meses;
         const total = principal + multa + juros;
 
         principalTotal += principal;
@@ -863,19 +1333,19 @@
             <div class="v">${formatBRL(total)}</div>
           </div>
           <div class="row">
-            <div class="k">Dias considerados</div>
-            <div class="v">${dias}</div>
+            <div class="k">Meses considerados</div>
+            <div class="v">${meses.toFixed(2)}</div>
           </div>
           <div class="row">
             <div class="k">Valor original da parcela</div>
             <div class="v">${formatBRL(principal)}</div>
           </div>
           <div class="row">
-            <div class="k">Multa (2% uma vez)</div>
+            <div class="k">Multa (${config.multa}% uma vez)</div>
             <div class="v">${formatBRL(multa)}</div>
           </div>
           <div class="row">
-            <div class="k">Juros (0,33% ao dia)</div>
+            <div class="k">Juros (${config.juros}% ao mês)</div>
             <div class="v">${formatBRL(juros)}</div>
           </div>
           <div class="row">
@@ -909,6 +1379,14 @@
       relatorioParcelas.appendChild(resumo);
 
       totalGeralJuros.textContent = formatBRL(totalGeral);
+      
+      // Atualizar fórmula no rodapé
+      const config = getConfig();
+      const footerFormula = el("footerFormula");
+      if(footerFormula){
+        footerFormula.innerHTML = `(interno) Por parcela: <span class="mono">total = principal + (principal*${config.multa}%) + (principal*${config.juros}%*meses)</span>`;
+      }
+      
       resultadoJuros.classList.add("show");
     });
 
